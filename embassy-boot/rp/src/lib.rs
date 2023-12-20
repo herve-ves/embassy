@@ -58,6 +58,11 @@ impl<'d, const SIZE: usize> WatchdogFlash<'d, SIZE> {
         watchdog.start(timeout);
         Self { flash, watchdog }
     }
+
+    /// Whether pause the watchdog timer or not
+    pub fn pause_on_debug(&mut self, pause: bool) {
+        self.watchdog.pause_on_debug(pause);
+    }
 }
 
 impl<'d, const SIZE: usize> ErrorType for WatchdogFlash<'d, SIZE> {
